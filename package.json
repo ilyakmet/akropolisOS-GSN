@@ -6,11 +6,12 @@
   "author": "ilyakmet <ilyakmet@gmail.com>",
   "license": "MIT",
   "scripts": {
-    "compile": "rm -rf build && yarn oz compile",
-    "coverage": "yarn compile && yarn truffle run coverage",
-    "test": "yarn compile && yarn mocha -r ts-node/register ./test/**/*.test.ts --exit --recursive",
-    "deploy": "yarn oz deploy",
-    "prettier:solidity": "npx prettier --write contracts/*.sol"
+    "compile": "rm -rf build && npx oz compile",
+    "coverage": "yarn compile && npx truffle run coverage",
+    "test": "yarn compile && npx mocha -r ts-node/register ./test/**/*.test.ts --exit --recursive --timeout 15000",
+    "deploy": "npx oz deploy",
+    "prettier:solidity": "npx prettier --write contracts/*.sol",
+    "postinstall": "yarn compile"
   },
   "devDependencies": {
     "@openzeppelin/cli": "^2.8.2",
@@ -31,6 +32,7 @@
     "typescript": "^3.9.6"
   },
   "dependencies": {
-    "@openzeppelin/contracts-ethereum-package": "^3.0.0"
+    "@openzeppelin/contracts-ethereum-package": "^2.4.0",
+    "gsn-v1-adapter": "akropolisio/gsn-v1-adapter#0.5.0"
   }
 }
